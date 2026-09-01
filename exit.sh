@@ -1,8 +1,9 @@
 #!/bin/bash
-help="namunaviy help variable"
+help="yordam"
 if [ -z "$1" ]; then
   echo "$help"
-  exit 1
+  exit 0
+  echo "exit ishladi "
 else
-  echo " shunchaki exit uchun "
+  echo "else"
 fi

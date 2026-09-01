@@ -17,29 +17,20 @@ panel disk -- disk holati hamda hajmini kurish
 panel status -- tizim hoaltini tekshirish
 panel users -- tizimdagi userslar ruyhatini olish
 panel help -- panel buyrugiga doir yordam olish"
-#disk ni holati va xotira
-disk=$(echo "$(df -h) $(lsblk)")
-#users uchun javobni tayyorlaymiz !
-users=$(awk -F ":" '{print $1}' /etc/passwd)
-# status uchun chiqish 
-status=$(echo "$(uptime)  $(date)")
 
-# asosiy shartlar  
+#shart qismi 'core'
 
 if [ -z "$arg" ]; then
   echo "$help "
 elif [ "$arg" = "disk" ]; then
-  echo " $disk "
+  echo "$(df -h) $(lsblk)"
 elif [ "$arg" = "status" ]; then
-  echo "$status"
+  echo "$(uptime)"
 elif [ "$arg" = "users" ]; then
-  echo "$users"
+  echo "$(awk -F ':' '{print $1}' /etc/passwd)"
 elif [ "$arg" = "help" ]; then
   echo "$help"
 else 
   echo " iltimos to'gri argument bilan qayta urinib kuring !? "
-  echo " mavjud funksiyalar ruyhati uchun == panel help == ni kiriting ! "
+  echo "$help"
 fi
-
-# shu bilan ish qisman asosiy qismi bajarildi commitlarda aniq qilib ketildi 
-# upgrade qismi uchun alias ni qushamiz 

@@ -31,6 +31,7 @@ case "$arg" in
   echo "$help"
   ;;
   *)
-  echo "I don't know this argument, please try again !"
+  echo "I don't know this argument, please try again ! $help"
+  exit 1
   ;;
 esac
